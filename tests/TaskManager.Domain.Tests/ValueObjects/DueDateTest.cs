@@ -36,11 +36,11 @@ public class DueDateTest
     public void IsOverdue_WhenDatePassed_ReturnsTrue()                                                                                             
     {                                                                                                                                              
         // Arrange - data 1 millisecondo nel futuro                                                                                                
-        var nearFuture = DateTime.UtcNow.AddMilliseconds(100);                                                                                     
+        var nearFuture = DateTime.UtcNow.AddMilliseconds(500);                                                                                     
         var dueDate = DueDate.FromDateTime(nearFuture);                                                                                            
                                                                                                                                                  
         // Act - aspettiamo che passi                                                                                                              
-        Thread.Sleep(150);                                                                                                                         
+        Thread.Sleep(1000);                                                                                                                         
                                                                                                                                                  
         // Assert                                                                                                                                  
         dueDate.IsOverdue.Should().BeTrue();                                                                                                     

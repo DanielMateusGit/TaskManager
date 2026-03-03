@@ -148,5 +148,13 @@ public class TaskItemTest
                                                                                                                                                  
       // Assert                                                                                                                                  
       task.Priority.Should().Be(Priority.Critical);                                                                                              
-  } 
+  }
+
+  [Fact]
+  public void CreateTaskItem_WithValidTask_AddDomainEvent()
+  {
+      // Assert + Act
+      TaskItem task = new TaskItem("Buy milk", Priority.Low);
+      task.DomainEvents.Count().Should().Be(1);
+  }
 }

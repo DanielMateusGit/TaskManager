@@ -1,3 +1,4 @@
+using TaskManager.Domain.Events;
 using TaskManager.Domain.Exceptions;
 
 namespace TaskManager.Domain.Entities;
@@ -11,6 +12,9 @@ public class TaskItem
     public bool IsCompleted => CompletedAt.HasValue;
     public DateTime CreatedAt { get; private set; }
     public DateTime? CompletedAt { get; private set; }
+    private readonly List<IDomainEvent> _domainEvents = new();
+    public IReadOnlyList<IDomainEvent> DomainEvents => _domainEvents; 
+    
     public TaskItem(string title, Priority priority)
     {
         if(string.IsNullOrWhiteSpace(title)) throw new EmptyTaskTitleException();
@@ -18,6 +22,8 @@ public class TaskItem
         this.Id = Guid.NewGuid();
         this.Title = title;
         this.Priority = priority;
+        
+        _domainEvents.Add(new TaskCreatedEvent(this.Id, this.Title));
     }
 
     public void Complete()

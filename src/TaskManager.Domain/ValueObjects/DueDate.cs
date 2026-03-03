@@ -9,9 +9,9 @@ public class DueDate
 
     private DueDate(DateTime dateTime)
     {
-        if (dateTime < DateTime.Today) throw new PastDueDateException();
+        if (dateTime < DateTime.UtcNow.Date) throw new PastDueDateException();
         this.Value = dateTime;
     }
     public static DueDate FromDateTime(DateTime dateTime) => new DueDate(dateTime);
-    public int DaysRemaining() => this.Value.Subtract(DateTime.Now).Days + 1;
+    public int DaysRemaining() => this.Value.Subtract(DateTime.UtcNow).Days + 1;
 }
