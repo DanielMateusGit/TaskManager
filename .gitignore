@@ -1,0 +1,20 @@
+# Build results
+bin/
+obj/
+
+# IDE
+.idea/
+.vs/
+*.user
+*.suo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Rider
+*.DotSettings.user
+
+# Test results
+TestResults/
+coverage/
