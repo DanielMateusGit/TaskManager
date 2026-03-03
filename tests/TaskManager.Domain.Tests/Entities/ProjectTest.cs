@@ -7,16 +7,6 @@ using FluentAssertions;
 
 public class ProjectTest
 {
-    // Test Richiesti (minimo)                                                                                                                        
-    //                                                                                                                                              
-    //     1. Constructor_WithValidName_SetsName                                                                                                          
-    // 2. Constructor_WhenCalled_GeneratesUniqueId                                                                                                    
-    // 3. Constructor_WhenCalled_SetsCreatedAt                                                                                                        
-    // 4. Constructor_WithEmptyName_ThrowsException                                                                                                   
-    // 5. Rename_WithValidName_UpdatesName                                                                                                            
-    // 6. Rename_WithEmptyName_ThrowsException                                                                                                        
-    // 7. UpdateDescription_SetsDescription     
-
     [Fact]
     public void Constructor_WithValidName_SetsName()
     {
