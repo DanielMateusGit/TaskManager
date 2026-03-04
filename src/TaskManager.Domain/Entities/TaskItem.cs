@@ -29,7 +29,10 @@ public class TaskItem
     public void Complete()
     {
         if(IsCompleted) throw new TaskAlreadyCompletedException(this.Id);
-        this.CompletedAt = DateTime.UtcNow;
+        DateTime timeTrack = DateTime.UtcNow;
+        this.CompletedAt = timeTrack; 
+        
+        _domainEvents.Add(new TaskCompletedEvent(Id, timeTrack));
     }
     public void UpdateTitle(string title)
     {

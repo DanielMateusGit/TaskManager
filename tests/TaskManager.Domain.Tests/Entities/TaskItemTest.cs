@@ -72,6 +72,7 @@ public class TaskItemTest
         
         // Assert
         task.IsCompleted.Should().BeTrue();
+        task.DomainEvents.Should().HaveCountGreaterThan(0);
     }
                                                                                                                                                      
     [Fact]                                                                                                                                         
@@ -84,7 +85,8 @@ public class TaskItemTest
       task.Complete();                                                                                                                           
                                                                                                                                                  
       // Assert                                                                                                                                  
-      task.CompletedAt.Should().BeCloseTo(DateTime.UtcNow, TimeSpan.FromSeconds(1));                                                             
+      task.CompletedAt.Should().BeCloseTo(DateTime.UtcNow, TimeSpan.FromSeconds(1));   
+      task.DomainEvents.Should().HaveCountGreaterThan(0);
     }                                                
     
     [Fact]                                                                                                                                         
@@ -98,7 +100,7 @@ public class TaskItemTest
         Action act = () => task.Complete();                                                                                                        
                                                                                                                                                  
         // Assert                                                                                                                                  
-        act.Should().Throw<InvalidOperationException>();                                                                                           
+        act.Should().Throw<InvalidOperationException>();        
     }
     
     [Fact]                                                                                                                                         
