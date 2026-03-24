@@ -31,7 +31,7 @@ public class TaskItem
         if(IsCompleted) throw new TaskAlreadyCompletedException(this.Id);
         DateTime timeTrack = DateTime.UtcNow;
         this.CompletedAt = timeTrack; 
-        
+
         _domainEvents.Add(new TaskCompletedEvent(Id, timeTrack));
     }
     public void UpdateTitle(string title)
